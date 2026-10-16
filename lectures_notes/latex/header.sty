@@ -1,4 +1,4 @@
-\ProvidesPackage{header}[2026/09/29 Пакет настроек для курса ДУ]
+\ProvidesPackage{header}[2026/09/29 Пакет настроек для конспектов лекций]
 
 % --- Язык и шрифты ---
 \usepackage{cmap}                   % поиск в PDF
@@ -7,16 +7,16 @@
 \usepackage[utf8]{inputenc}         % кодировка исходного текста
 \usepackage[english,russian]{babel} % локализация и переносы
 
-%% Кастомизация списокв
+%% Кастомизация списков
 \usepackage{enumitem}
 
 % --- Математика ---
-\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools} %AMS
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools} % AMS
 \usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
 \usepackage{cancel} % Для зачеркивания сокращаемых слагаемых
 
 %% Номера формул
-\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+\mathtoolsset{showonlyrefs=true} % Показывать номера только у формул с \eqref{}
 
 % --- Графика и алгоритмы ---
 \usepackage{xcolor}
@@ -27,12 +27,24 @@
 \usepackage{wrapfig}        % обтекание текстом
 \usepackage{graphicx}
 \graphicspath{{img/}}
-\usepackage{listings} % Для вставок кода
+\usepackage{listings}       % Для вставок кода
 
 % --- Настройки страницы и ссылок ---
-\usepackage[left=1.5cm, right=1.5cm, top=2cm, bottom=2cm, bindingoffset=0cm]{geometry}
-\usepackage[unicode=true, colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=black]{hyperref}
-\usepackage{nameref} % \nameref{sec:intro} печатает название секции вместо её номера.
+\usepackage[
+    left=1.5cm,
+    right=1.5cm,
+    top=2cm,
+    bottom=2cm,
+    bindingoffset=0cm
+]{geometry}
+\usepackage[
+    unicode=true,
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=black
+]{hyperref}
+\usepackage{nameref} % \nameref{sec:intro} печатает название секции
 
 \usepackage{titlesec}
 
@@ -47,26 +59,24 @@
   {4.5ex plus 1ex minus .2ex}
   {1.5ex plus .2ex}
 
-% --- Подподраздел: сдвиг вправо и 1em вертикального отступа сверху ---
+% --- Подподраздел: сдвиг вправо и 2em вертикального отступа сверху ---
 \titlespacing*{\subsubsection}
-  {1 em}                          % отступ слева (сдвиг заголовка)
-  {2 em}                          % отступ сверху
+  {1em}                          % отступ слева (сдвиг заголовка)
+  {2em}                          % отступ сверху
   {1ex plus .2ex}                % отступ снизу
 
 % --- Оформление теорем и определений ---
-\theoremstyle{plain} % Курсивный текст (это стиль по умолчанию, его можно не переопределять).
+\theoremstyle{plain}
 \newtheorem{theorem}{Теорема}[section]
 \newtheorem{lemma}[theorem]{Лемма}
 \newtheorem{proposition}[theorem]{Утверждение}
 \newtheorem*{corollary}{Следствие}
 
-
-\theoremstyle{definition} % Прямой текст
+\theoremstyle{definition}
 \newtheorem{definition}{Определение}[section]
 \newtheorem{problem}{Задача}[section]
 \newtheorem*{designation}{Обозначение}
 \newtheorem*{properties}{Свойства}
-
 
 \theoremstyle{remark}
 \newtheorem{remark}{Замечание}[section]
@@ -75,7 +85,6 @@
 \renewcommand{\qedsymbol}{$\blacksquare$}
 
 % --- Пользовательские макросы (шорткаты) ---
-% Позволяют писать \R вместо \mathbb{R}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -89,4 +98,10 @@
 \newcommand{\abs}[1]{\left| #1 \right|}
 \newcommand{\norm}[1]{\left\| #1 \right\|}
 
-\newcommand{\textdef}[1]{\underline{\textbf{\textit{#1}}}} % Кастомная функция для выделения опеределений
+% Математические операторы для теории множеств и отношений
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\cl}{cl}
+
+% Кастомная функция для выделения определений
+\newcommand{\textdef}[1]{\underline{\textbf{\textit{#1}}}}
